@@ -3,18 +3,22 @@
 
 class Event{
 public:
+
+	static const int DEPARTURE;
+	static const int ARRIVAL;
+
 	Event();
-	Event(char* input);
+	Event(char* in);
 	Event(const Event&);
 	Event& operator= (const Event&);
 	~Event();
 
+	void setNewEvent(char* in);
 	DateTime getDateTime() const;
 	int getType() const;
 	int getDepartId() const;
 private:
-	static const int DEPARTURE;
-	static const int ARRIVAL;
+	
 	int type;
 	int departId;
 	DateTime dateTime;
