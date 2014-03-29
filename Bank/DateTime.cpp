@@ -64,3 +64,18 @@ Date DateTime::getDate() const{
 Time DateTime::getTime() const{
 	return time;
 }
+
+bool operator<(const DateTime& dt1, const DateTime& dt2){
+	if(dt1.getDate() < dt2.getDate())
+		return true;
+	else if(dt1.getDate() == dt2.getDate()){
+		if(dt1.getTime() < dt2.getTime())
+			return true;
+		else
+			return false;
+	}
+	else
+		return false;
+	}
+		
+}

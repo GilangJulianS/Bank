@@ -61,3 +61,22 @@ int Time::getMinute() const{
 int Time::getSecond() const{
 	return second;
 }
+
+bool operator<(const Time& t1, const Time& t2){
+	if(t1.getHour() < t2.getHour())
+		return true;
+	else if(t1.getHour() == t2.getHour()){
+		if(t1.getMinute() < t2.getMinute())
+			return true;
+		else if(t1.getMinute() == t2.getMinute()){
+			if(t1.getSecond() < t2.getSecond())
+				return true;
+			else 
+				return false;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
+}

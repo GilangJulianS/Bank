@@ -17,6 +17,8 @@ public:
 	void setDateTime(int d, int mo, int y, int h, int mi, int s);
 	Date getDate() const;
 	Time getTime() const;
+
+	friend bool operator<(const DateTime& dt1, const DateTime& dt2);
 private:
 	Date date;
 	Time time;

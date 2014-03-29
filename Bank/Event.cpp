@@ -24,7 +24,7 @@ Event::Event(char* in){
 	}
 	else if(in[20] == 'D'){
 		type = DEPARTURE;
-		departId = in[22] - '0';
+		departId = generateId(in, 22);
 	}
 	else{
 		type = -1;
@@ -62,7 +62,7 @@ void Event::setNewEvent(char* in){
 	}
 	else if(in[20] == 'D'){
 		type = DEPARTURE;
-		departId = in[22] - '0';
+		departId = generateId(in, 22);
 	}
 	else{
 		type = -1;
@@ -80,4 +80,27 @@ int Event::getType() const{
 
 int Event::getDepartId() const{
 	return departId;
+}
+
+int generateId(char* str, int firstId){
+	if(str[firstId] == NULL)
+		return -1;
+	else{
+		int tail = generateId(str, firstId+1);
+		int power;
+		if(tail == -1){
+			power = 1;
+			tail = 0;
+		}
+		else
+			power = getPower10(tail) * 10;
+		return (str[firstId] - '0') * power + tail;
+	}
+}
+
+int getPower10(int n){
+	if(n < 10)
+		return 1;
+	else
+		return 10 * getPower10(n/10);
 }

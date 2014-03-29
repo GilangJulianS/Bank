@@ -4,14 +4,18 @@
 #include "Queue.h"
 #include "Event.h"
 #include "Teller.h"
+#include <string>
 
 using namespace std;
+
+int jockeying(int origin);
+
+Teller* tellers;
+int nTeller;
 
 int main(){
 	DateTime TMax, currTime;
 	Event event;
-	Teller* tellers;
-	int nTeller;
 	int pil;
 	int lastCustomerId = 0;
 	char* in = new char[100];
@@ -47,12 +51,16 @@ int main(){
 				tellers[dstIdx].addCustomer(lastCustomerId);
 			}
 			else if(event.getType() == Event::DEPARTURE){
-				int dstIdx = 0;
+				int tellerIdx = 0;
 				for(int i=0; i<nTeller; i++){
 					if(tellers[i].getFrontCustomerId() == event.getDepartId())
-						dstIdx = i;
+						tellerIdx = i;
 				}
-				tellers[dstIdx].processCustomer();
+				tellers[tellerIdx].processCustomer();
+				int jockey = jockeying(tellerIdx);
+				if(jockey != -1){
+					tellers[jockey].jockey(tellers[tellerIdx].jockey());
+				}
 			}
 			for(int i=0; i<nTeller; i++){
 				if(tellers[i].isServing())	
@@ -71,4 +79,18 @@ int main(){
 
 	std::cin >> in;
 	return 0;
+}
+
+int jockeying(int origin){
+	bool found = false;
+	int i = 0;
+	while(i<nTeller && !found){
+		if(tellers[origin].getCustomerCount() - tellers[i].getCustomerCount() >= 2)
+			found = true;
+		i++;
+	}
+	if(found)
+		return i-1;
+	else
+		return -1;
 }

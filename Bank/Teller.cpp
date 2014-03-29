@@ -57,10 +57,19 @@ void Teller::processCustomer(){
 		serving = false;
 }
 
+int Teller::jockey(){
+	return customers->DeleteLast();
+}
+
+void Teller::jockey(int customerId){
+	customers->Add(customerId);
+}
+
 int Teller::getFrontCustomerId(){
 	Queue* temp = new Queue();
 	*temp = *customers;
 	return temp->Delete();
+
 }
 
 int Teller::getCustomerCount(){

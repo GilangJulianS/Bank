@@ -10,8 +10,10 @@ public:
 
 	void addCustomer(int customerId);
 	void processCustomer();
+	void jockey(int customerId);
 	int getFrontCustomerId();
 	int getCustomerCount();
+	int jockey();
 	bool isServing();
 private:
 	static int lastTellerId;

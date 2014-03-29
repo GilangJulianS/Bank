@@ -61,3 +61,22 @@ int Date::getMonth() const{
 int Date::getYear() const{
 	return year;
 }
+
+bool operator<(const Date& d1, const Date& d2){
+	if(d1.getYear() < d2.getYear())
+		return true;
+	else if(d1.getYear() == d2.getYear()){
+		if(d1.getMonth() < d2.getMonth())
+			return true;
+		else if(d1.getMonth() == d2.getMonth()){
+			if(d1.getDay() < d2.getDay())
+				return true;
+			else 
+				return false;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
+}
