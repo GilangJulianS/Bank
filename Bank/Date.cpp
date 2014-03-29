@@ -80,3 +80,13 @@ bool operator<(const Date& d1, const Date& d2){
 	else
 		return false;
 }
+
+bool operator==(const Date& d1, const Date& d2){
+	return (d1.getYear() == d2.getYear() &&
+		d1.getMonth() == d2.getMonth() &&
+		d1.getDay() == d2.getDay());
+}
+
+bool operator>(const Date& d1, const Date& d2){
+	return !(d1 < d2 || d1 == d2);
+}

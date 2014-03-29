@@ -21,7 +21,8 @@ public:
 	int getYear() const;
 
 	friend bool operator<(const Date& d1, const Date& d2);
-
+	friend bool operator==(const Date& d1, const Date& d2);
+	friend bool operator>(const Date& d1, const Date& d2);
 protected:
 	int day;
 	int month;

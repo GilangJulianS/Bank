@@ -80,3 +80,13 @@ bool operator<(const Time& t1, const Time& t2){
 	else
 		return false;
 }
+
+bool operator==(const Time& t1, const Time& t2){
+	return (t1.getHour() == t2.getHour() &&
+		t1.getMinute() == t2.getMinute() &&
+		t1.getSecond() == t2.getSecond());
+}
+
+bool operator>(const Time& t1, const Time& t2){
+	return !(t1 < t2 || t1 == t2);
+}

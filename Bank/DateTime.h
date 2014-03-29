@@ -19,6 +19,8 @@ public:
 	Time getTime() const;
 
 	friend bool operator<(const DateTime& dt1, const DateTime& dt2);
+	friend bool operator==(const DateTime& dt1, const DateTime& dt2);
+	friend bool operator>(const DateTime& dt1, const DateTime& dt2);
 private:
 	Date date;
 	Time time;

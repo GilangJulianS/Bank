@@ -76,6 +76,13 @@ bool operator<(const DateTime& dt1, const DateTime& dt2){
 	}
 	else
 		return false;
-	}
-		
+}
+
+bool operator==(const DateTime& dt1, const DateTime& dt2){
+	return (dt1.getDate() == dt2.getDate() &&
+		dt1.getTime() == dt2.getTime());
+}
+
+bool operator>(const DateTime& dt1, const DateTime& dt2){
+	return !(dt1 < dt2 || dt1 == dt2);
 }

@@ -58,10 +58,16 @@ void Teller::processCustomer(){
 }
 
 int Teller::jockey(){
+	nCustomers--;
 	return customers->DeleteLast();
 }
 
 void Teller::jockey(int customerId){
+	nCustomers++;
+	if(nCustomers > 0)
+		serving = true;
+	else
+		serving = false;
 	customers->Add(customerId);
 }
 

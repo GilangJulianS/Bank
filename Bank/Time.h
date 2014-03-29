@@ -22,6 +22,8 @@ public:
 	int getSecond() const;
 
 	friend bool operator<(const Time& t1, const Time& t2);
+	friend bool operator==(const Time& t1, const Time& t2);
+	friend bool operator>(const Time& t1, const Time& t2);
 protected:
 	int hour;
 	int minute;
