@@ -1,3 +1,5 @@
+/** Date Class. Kelas untuk menampung tanggal */
+
 #pragma once
 #include <iostream>
 
@@ -24,7 +26,7 @@ public:
 	friend bool operator==(const Date& d1, const Date& d2);
 	friend bool operator>(const Date& d1, const Date& d2);
 protected:
-	int day;
-	int month;
-	int year;
+	int day; /*!< Attribute yang menyatakan hari */
+	int month; /*!< Attribute yang menyatakan bulan */
+	int year; /*!< Attribute yang menyatakan tahun */
 };

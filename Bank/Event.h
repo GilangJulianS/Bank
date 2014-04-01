@@ -22,6 +22,6 @@ private:
 	int type;
 	int departId;
 	DateTime dateTime;
-	friend int generateId(char* str, int firstIdx);
-	friend int getPower10(int);
+	int generateId(char* str, int firstIdx);
+	int getPower10(int);
 };
